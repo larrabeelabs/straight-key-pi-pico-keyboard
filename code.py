@@ -1,10 +1,7 @@
-# SPDX-FileCopyrightText: 2018 Kattni Rembor for Adafruit Industries
-#
-# SPDX-License-Identifier: MIT
+# Circuit Python 
+# keyboard for Pi Pico to be used with hamradio.solutions/vband/
 
-"""CircuitPython Essentials HID Keyboard example"""
 import time
-
 import board
 import digitalio
 import usb_hid
@@ -24,14 +21,10 @@ time.sleep(1)  # Sleep for a bit to avoid a race condition on some systems
 keyboard = Keyboard(usb_hid.devices)
 keyboard_layout = KeyboardLayoutUS(keyboard)  # We're in the US :)
 
-
 switch = digitalio.DigitalInOut(board.GP21)
 switch.switch_to_input(pull=digitalio.Pull.UP)
 
-# For most CircuitPython boards:
 led = digitalio.DigitalInOut(board.LED)
-# For QT Py M0:
-# led = digitalio.DigitalInOut(board.SCK)
 led.direction = digitalio.Direction.OUTPUT
 
 print("Waiting for key pin...")
@@ -50,5 +43,3 @@ while True:
 
         keyboard.release_all()  # ..."Release"!
         
-
-    
